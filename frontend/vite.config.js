@@ -57,6 +57,11 @@ export default defineConfig(() => {
     ],
     resolve: {
       alias: {
+        // frappe's CodeEditorField needs `CodePreview`, missing from the pinned frappe-ui
+        'frappe-ui/code-editor': path.resolve(
+          import.meta.dirname,
+          'src/shims/codeEditor.js',
+        ),
         '@': path.resolve(import.meta.dirname, 'src'),
         // point at the package src dir (not index.ts) so subpath imports like
         // `@whatsapp/ui/components/Messages` resolve to a real file
